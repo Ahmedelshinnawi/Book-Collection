@@ -9,21 +9,21 @@ const jwt = require('jsonwebtoken');
 const adminLayout = '../views/layouts/admin';
 
 
-const authMiddleWare = async (req, res, next) => {
-  const cookie = req.cookies.token;
+const authMiddleware = (req, res, next ) => {
+  const token = req.cookies.token;
 
-  if(!cookie){
-    return res.status(401).json({message: 'Unauthorized'});
+  if(!token) {
+    return res.status(401).json( { message: 'Unauthorized'} );
   }
 
-  try{
+  try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    res.userId = decoded.userId; 
+    req.userId = decoded.userId;
+    next();
+  } catch(error) {
+    res.status(401).json( { message: 'Unauthorized'} );
   }
-  catch(error){
-    return res.status(401).json({message: 'Unauthorized'});
 }
-};
 
 router.get('/admin', async (req, res) => {
   try {
@@ -60,7 +60,7 @@ router.post('/admin', async (req, res) => {
       return res.status(401).json({message: 'Invalid Username or Password'});
     }
 
-    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
+    const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET);
     res.cookie('token', token, {httpOnly: true});
     // res.status(200).json({message: 'Login Successful'});
     res.redirect('/dashboard');
@@ -73,7 +73,7 @@ router.post('/admin', async (req, res) => {
   });
 
 
-router.get('/dashboard', authMiddleWare, async (req, res) => {
+router.get('/dashboard', authMiddleware, async (req, res) => {
 
   res.render('admin/dashboard');
 
