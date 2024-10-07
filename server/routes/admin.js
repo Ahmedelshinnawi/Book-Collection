@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post.js')
-const User = require('../models/User.js')
+const Post = require('../models/Post')
+const User = require('../models/User')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 const adminLayout = '../views/layouts/admin';
@@ -40,5 +42,27 @@ router.post('/admin', async (req, res) => {
   
   });
 
+
+router.post('/register', async(req, res) => {
+  try {
+    const {username, password} = req.body;
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    try {
+      
+      const user = await User.create(username, password)
+
+
+    } catch (error) {
+      
+    }
+
+
+
+  } catch (error) {
+    console.log(error);
+  }
+
+});
 
 module.exports = router;
