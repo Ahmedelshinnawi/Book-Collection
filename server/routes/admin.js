@@ -120,6 +120,29 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 });
 
 
+router.post('/add-post', authMiddleware, async (req, res) => {
+
+  try {
+   try {
+    const newPost = new Post({
+      title: req.body.title,
+      body: req.body.body
+    });
+
+    await Post.create(newPost);
+     res.redirect('/dashboard');
+   } catch (error) {
+    console.log(error)
+   }
+
+  } catch (error) {
+    console.log(error);
+   
+  }
+
+});
+
+
 router.post('/register', async(req, res) => {
   try {
     const {username, password} = req.body;
