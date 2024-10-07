@@ -1,0 +1,16 @@
+<div class="info">
+    <h1 class="info__heading">Search Results</h1>
+</div>
+
+<section class="books">
+    <ul class="books-ul">
+        <% data.forEach(post => { %>
+        <li>
+            <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="books-list__date"><%= post.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</section>

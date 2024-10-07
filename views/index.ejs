@@ -1,0 +1,26 @@
+<div class="info">
+    <h1 class="info__heading">Book Collection</h1>
+    <p class="info__body">It allows you to maintain a personal book collection. you can add, edit, delete, and view your books</p>
+</div>
+
+<img src="/img/photo-1468273519810-d3fe4c125cdb.jpeg" alt="Ordered-books" class="hero-img" width="981" height="528">
+
+<section class="books">
+    <h2 class="books__heading">Latest Books</h2>
+    <ul class="books-ul">
+        <% data.forEach(post => { %>
+        <li>
+            <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="books-list__date"><%= post.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+
+    <% if (nextPage !== null) { %>
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+      <% } %>
+    
+
+</section>
