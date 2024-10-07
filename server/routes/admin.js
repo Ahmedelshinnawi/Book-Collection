@@ -84,14 +84,38 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
     const data = await Post.find();
     res.render('admin/dashboard',{
      locals,
-      data
+      data,
+      layout:adminLayout
     });
-    
+
    } catch (error) {
      console.log(error);
     
    }
   
+
+});
+
+
+router.get('/add-post', authMiddleware, async (req, res) => {
+
+  try {
+   const locals ={
+     title: 'Add Post',
+     description: 'Book Collection API with User Authentication.'
+ }
+
+   const data = await Post.find();
+   res.render('admin/add-post',{
+    locals,
+    layout:adminLayout
+   });
+
+  } catch (error) {
+    console.log(error);
+   
+  }
+ 
 
 });
 
