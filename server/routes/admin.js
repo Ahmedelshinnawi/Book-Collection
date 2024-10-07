@@ -75,7 +75,23 @@ router.post('/admin', async (req, res) => {
 
 router.get('/dashboard', authMiddleware, async (req, res) => {
 
-  res.render('admin/dashboard');
+   try {
+    const locals ={
+      title: 'Book Collection',
+      description: 'Book Collection API with User Authentication.'
+  }
+
+    const data = await Post.find();
+    res.render('admin/dashboard',{
+     locals,
+      data
+    });
+    
+   } catch (error) {
+     console.log(error);
+    
+   }
+  
 
 });
 
