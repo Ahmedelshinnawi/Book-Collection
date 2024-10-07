@@ -14,14 +14,13 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  color: var(--black);
+  color: #eee;
   font-size: var(--font-size-base);
-  background-color: #999999;
-  /* background-image: url("/img/img-noise-361x370.png"); */
+  background-color: #222;
   margin: 0;
 }
 
-a { color: var(--black); }
+a { color: #eee; }
 h1 { font-size: var(--font-size-xl); }
 h2 { font-size: var(--font-size-lg); }
 h3 { font-size: var(--font-size-md); }
@@ -42,9 +41,9 @@ textarea {
 }
 
 .btn {
-  background-color: var(--black);
+  background-color: #7f7f7f;
   border: none;
-  color: white; 
+  color: #eee; 
   padding: 16px 32px;
   text-decoration: none;
   margin: 4px 2px; 
@@ -140,11 +139,11 @@ img {
   border: 2px solid transparent;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--black);
+  color: #eee;
 }
 
 .header__button button:hover {
-  border: 2px solid var(--black);
+  border: 2px solid #eee;
 }
 
 .header__nav ul {
@@ -202,7 +201,7 @@ img {
 
 .books-list__date {
   font-size: 1rem;
-  color: hsl(0deg 0% 18.27% / 30%);
+  color: #4d4d4d;
   width: 100px;
   display: inline-block;
   width: 260px;
@@ -279,8 +278,8 @@ img {
 
 .admin-post-controls .btn  {
   display: inline-block;
-  background-color: var(--black);
-  color: var(--gray-light);
+  background-color: #cccbcb;
+  color: #333;
   border: 0;
   text-decoration: none;
   font-size: .8rem;
