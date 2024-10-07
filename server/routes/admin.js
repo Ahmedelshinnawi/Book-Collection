@@ -32,8 +32,19 @@ router.post('/admin', async (req, res) => {
     try {
       
     const {username, password}= req.body;
-    console.log(req.body);
-    res.redirect('/admin');
+    const user = await User.findOne({username});
+
+    if(!user){
+      return res.status(401).json({message: 'Invalid Username or Password'});
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if(!isPasswordValid){
+      return res.status(401).json({message: 'Invalid Username or Password'});
+    }
+
+    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
 
 
     } catch (error) {
@@ -50,10 +61,15 @@ router.post('/register', async(req, res) => {
 
     try {
       
-      const user = await User.create(username, password)
+      const user = await User.create({username, password: hashPassword});
+      res.status(201).json({message: 'User created', user});
 
 
     } catch (error) {
+      if(error.code === 11000){
+        return res.status(409).json({message: 'Username already exists'});
+      }
+      res.status(500).json({message: 'Server Error'});
       
     }
 
