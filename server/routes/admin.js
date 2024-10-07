@@ -9,6 +9,22 @@ const jwt = require('jsonwebtoken');
 const adminLayout = '../views/layouts/admin';
 
 
+const authMiddleWare = async (req, res, next) => {
+  const cookie = req.cookies.token;
+
+  if(!cookie){
+    return res.status(401).json({message: 'Unauthorized'});
+  }
+
+  try{
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.userId = decoded.userId; 
+  }
+  catch(error){
+    return res.status(401).json({message: 'Unauthorized'});
+}
+};
+
 router.get('/admin', async (req, res) => {
   try {
     const locals = {
@@ -45,6 +61,9 @@ router.post('/admin', async (req, res) => {
     }
 
     const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
+    res.cookie('token', token, {httpOnly: true});
+    // res.status(200).json({message: 'Login Successful'});
+    res.redirect('/dashboard');
 
 
     } catch (error) {
@@ -52,6 +71,13 @@ router.post('/admin', async (req, res) => {
     }
   
   });
+
+
+router.get('/dashboard', authMiddleWare, async (req, res) => {
+
+  res.render('admin/dashboard');
+
+});
 
 
 router.post('/register', async(req, res) => {
