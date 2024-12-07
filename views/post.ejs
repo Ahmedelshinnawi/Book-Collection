@@ -1,2 +1,4 @@
 <h1><%= data.title %></h1>
-<article class="books"><%= data.author %></article>
+<h3>Author: &nbsp;<%= data.body %></h3>
+<article>Created At: &nbsp;<%= data.createdAt.toDateString()%></article>
+<article>Updated At: &nbsp;<%= data.updatedAt.toDateString() %></article>
