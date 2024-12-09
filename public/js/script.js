@@ -59,9 +59,9 @@ const html2 = `<form action="/admin" method="POST" class="login">
 //   login.innerHTML = html;
 //   login.action = "/register";
 // });
-let isChanged = true;
+let isClicked = true;
 registerButton.addEventListener("click", function () {
-  if (isChanged) {
+  if (isClicked) {
     title.textContent = "Register";
     login.innerHTML = html;
     login.action = "/register";
@@ -72,6 +72,5 @@ registerButton.addEventListener("click", function () {
     login.action = "/admin";
     registerButton.textContent = "Register";
   }
-  isChanged = !isChanged;
-  console.log(login.action);
+  isClicked = !isClicked;
 });
