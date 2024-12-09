@@ -64,15 +64,15 @@ A Node.js-based application for managing a collection of books. It features a us
 
 ## API Endpoints:
 ### Authentication
-- POST /register: Register a new user.
-- POST /admin: Authenticate and get a JWT token.
+- **`POST`** /register: Register a new user.
+- **`POST`** /admin: Authenticate and get a JWT token.
 
 ### Collections (Protected Routes)
-- GET /dashboard: Get a list of all posts for the authenticated user.
-- GET /add-post/:id: View details of a specific post.
-- POST /add-post: Add a new post.
-- PUT /edit-post/:id: Update a specific post's information.
-- DELETE /delete-post/:id: Remove a post from the database
+- **`GET`** /dashboard: Get a list of all posts for the authenticated user.
+- **`GET`** /add-post/:id: View details of a specific post.
+- **`POST`** /add-post: Add a new post.
+- **`PUT`** /edit-post/:id: Update a specific post's information.
+- **`DELETE`** /delete-post/:id: Remove a post from the database
 
 
 
