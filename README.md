@@ -31,17 +31,21 @@ A Node.js-based application for managing a collection of books. It features a us
 ### Installation
 
 1. Clone the repository:
-
-   ```
+   ```bash
+   
    https://github.com/Ahmedelshinnawi/Book-Collection
-   ```
-2.
+   
+2. Navigate to the project directory
    ```
    cd Book-Collection
+
+4. Install dependencies:
+   ```bash
    npm install
     ```
 3. Setup Database
     **Sign up for MongoDB free database cluster:**  [MongoDB](https://www.mongodb.com/)
+   
 4. Set up environment variables:
    **Create a .env file to store your credentials. Example below:**
      ```
