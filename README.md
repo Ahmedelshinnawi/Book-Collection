@@ -32,20 +32,19 @@ A Node.js-based application for managing a collection of books. It features a us
 
 1. Clone the repository:
    ```bash
+   git clone https://github.com/Ahmedelshinnawi/Book-Collection.git
    
-   https://github.com/Ahmedelshinnawi/Book-Collection
-   
-2. Navigate to the project directory
+3. Navigate to the project directory
    ```
    cd Book-Collection
 
 4. Install dependencies:
    ```bash
    npm install
-    ```
+   
 3. Setup Database
     **Sign up for MongoDB free database cluster:**  [MongoDB](https://www.mongodb.com/)
-   
+  
 4. Set up environment variables:
    **Create a .env file to store your credentials. Example below:**
      ```
@@ -61,6 +60,20 @@ A Node.js-based application for managing a collection of books. It features a us
 - **`server/`**: Contains backend logic and route handling for the application.
 - **`public/`**: Includes static assets such as CSS, JavaScript, and images used in the frontend.
 - **`views/`**: Holds EJS templates for rendering the user interface.
+
+
+## API Endpoints:
+### Authentication
+- POST /register: Register a new user.
+- POST /admin: Authenticate and get a JWT token.
+
+### Collections (Protected Routes)
+- GET /dashboard: Get a list of all posts for the authenticated user.
+- GET /add-post/:id: View details of a specific post.
+- POST /add-post: Add a new post.
+- PUT /edit-post/:id: Update a specific post's information.
+- DELETE /delete-post/:id: Remove a post from the database
+
 
 
 
