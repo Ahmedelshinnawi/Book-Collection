@@ -86,7 +86,6 @@ router.get("/add-post", authMiddleware, async (req, res) => {
       description: "Book Collection API with User Authentication.",
     };
 
-    const data = await Post.find();
     res.render("admin/add-post", {
       locals,
       layout: adminLayout,
@@ -164,8 +163,6 @@ router.post("/register", async (req, res) => {
       const user = await User.create({ username, password: hashPassword });
       // res.status(201).json({ message: "User created", user });
       res.redirect("/admin");
-      document.querySelector(".status").textContent =
-        "User created, Please login";
     } catch (error) {
       if (error.code === 11000) {
         return res.status(409).json({ message: "Username already exists" });
